@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Certifications</title>
+    <style>
+        .image-container {
+            cursor: pointer;
+            position: relative;
+        }
+
+        .zoom-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s;
+        }
+
+        .zoom-overlay.show {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .zoomed-image {
+            max-width: 90%;
+            max-height: 90%;
+        }
+    </style>
+</head>
+<body>
+
+    <a href="../index.html" style="margin-left: 20px;"><b>&#8592 Go Back</b></a>
+
+    <h1>Certifications</h1>
+
+    <h2>CompTIA A+</h2>
+    <div class="image-container" onclick="showZoomOverlay(this)">
+        <img class="zoomed-image" src="../assets/images/CompTIA A+ ce certificate.png" height="400" alt="Zoomable Image 1">
+    </div>
+      
+    <h2>CompTIA Network+</h2>
+    <div class="image-container" onclick="showZoomOverlay(this)">
+        <img class="zoomed-image" src="../assets/images/CompTIA Network+ ce certificate.png" height="400" alt="Zoomable Image 2">
+    </div>
+
+    <h2>Microsoft Azure Essentials</h2>
+    <div class="image-container" onclick="showZoomOverlay(this)">
+        <img class="zoomed-image" src="../assets/images/Microsoft AZ-900 Certification.png" height="400" alt="Zoomable Image 2">
+    </div>
+      
+    <div class="zoom-overlay" onclick="hideZoomOverlay()">
+        <img class="zoomed-image" id="zoomedImg" alt="Zoomed Image">
+    </div>
+    
+    <script>
+        var zoomOverlay = document.querySelector(".zoom-overlay");
+        var zoomedImg = document.getElementById("zoomedImg");
+        
+        function showZoomOverlay(imageContainer) {
+          var image = imageContainer.querySelector(".zoomed-image");
+          zoomedImg.src = image.src;
+          zoomOverlay.classList.add("show");
+        }
+        
+        function hideZoomOverlay() {
+          zoomOverlay.classList.remove("show");
+        }
+    </script>
+    
+</body>
+</html>
